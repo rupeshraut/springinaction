@@ -17,8 +17,8 @@
 		<task:scheduled ref="sampleJobSchedulingLauncher" method="launch" fixed-rate="3000" />
 	</task:scheduled-tasks>
 
-	<task:scheduled-tasks scheduler="scheduler">
+	<!-- <task:scheduled-tasks scheduler="scheduler">
 		<task:scheduled ref="personJobSchedulingLauncher" method="launch" fixed-rate="3000" />
-	</task:scheduled-tasks>
+	</task:scheduled-tasks> -->
 
 </beans>

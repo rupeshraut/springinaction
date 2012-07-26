@@ -19,7 +19,7 @@
 		</batch:tasklet>
 	</batch:step>
 
-	<batch:job id="personJob" restartable="true">
+	<batch:job id="personJob">
 		<batch:step id="step1" parent="personStep" />
 	</batch:job>
 

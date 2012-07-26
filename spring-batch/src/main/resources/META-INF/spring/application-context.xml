@@ -12,7 +12,7 @@
 	
 	<import resource="jobs/launch-context.xml"/>
 	<import resource="jobs/sample-job-context.xml"/>
-	<import resource="jobs/person-job-context.xml"/>
+	<!-- <import resource="jobs/person-job-context.xml"/> -->
 	<import resource="jobs/job-shcedule.xml"/>
 	<context:component-scan base-package="kbae.spring.batch"/>
 
