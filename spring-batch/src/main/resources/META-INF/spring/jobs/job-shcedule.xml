@@ -11,13 +11,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 
-	<task:scheduler id="scheduler" pool-size="5"/>
+	<task:scheduler id="scheduler" pool-size="5" />
 
-	<!-- <task:scheduled-tasks scheduler="scheduler" >
+	<task:scheduled-tasks scheduler="scheduler">
 		<task:scheduled ref="sampleJobSchedulingLauncher" method="launch" fixed-rate="3000" />
-	</task:scheduled-tasks> -->
+	</task:scheduled-tasks>
 
-	<task:scheduled-tasks scheduler="scheduler" >
+	<task:scheduled-tasks scheduler="scheduler">
 		<task:scheduled ref="personJobSchedulingLauncher" method="launch" fixed-rate="3000" />
 	</task:scheduled-tasks>
 

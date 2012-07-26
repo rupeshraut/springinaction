@@ -9,20 +9,15 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-
-	
-
 	<bean id="simpleCompletionPolicy" class="org.springframework.batch.repeat.policy.SimpleCompletionPolicy">
-		<property name="chunkSize" value="1"/>
+		<property name="chunkSize" value="1" />
 	</bean>
 
 	<batch:step id="personStep">
 		<batch:tasklet>
-			<batch:chunk reader="personReader" processor="personProcessor" writer="personWriter" chunk-completion-policy="simpleCompletionPolicy"/>
+			<batch:chunk reader="personReader" processor="personProcessor" writer="personWriter" chunk-completion-policy="simpleCompletionPolicy" />
 		</batch:tasklet>
 	</batch:step>
-
-
 
 	<batch:job id="personJob" restartable="true">
 		<batch:step id="step1" parent="personStep" />

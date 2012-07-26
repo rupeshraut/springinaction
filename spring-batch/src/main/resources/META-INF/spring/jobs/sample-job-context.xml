@@ -10,7 +10,6 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-
 	<bean id="stepOne" class="kbae.spring.batch.tasklet.StepOne" />
 	<bean id="stepTwo" class="kbae.spring.batch.tasklet.StepTwo" />
 	<bean id="stepThree" class="kbae.spring.batch.tasklet.StepThree" />
