@@ -38,8 +38,10 @@ public class PersonJobSchedulingLauncher {
 	 */
 	private JobParameters createJobParameters() {
 		final long runTime = System.currentTimeMillis();
-
-		return new JobParametersBuilder().addString("PERSON", "Rupesh").addLong("TIME", runTime).toJobParameters();
+		return new JobParametersBuilder()
+					.addString("PERSON", "Rupesh")
+						.addLong("TIME", runTime)
+							.toJobParameters();
 	}// createJobParameters()
 
 }

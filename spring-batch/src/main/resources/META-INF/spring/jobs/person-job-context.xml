@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:task="http://www.springframework.org/schema/task"
-	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:batch="http://www.springframework.org/schema/batch" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="simpleCompletionPolicy" class="org.springframework.batch.repeat.policy.SimpleCompletionPolicy">
-		<property name="chunkSize" value="1" />
-	</bean>
+    <bean id="simpleCompletionPolicy" class="org.springframework.batch.repeat.policy.SimpleCompletionPolicy">
+        <property name="chunkSize" value="1" />
+    </bean>
 
-	<batch:step id="personStep">
-		<batch:tasklet>
-			<batch:chunk reader="personReader" processor="personProcessor" writer="personWriter" chunk-completion-policy="simpleCompletionPolicy" />
-		</batch:tasklet>
-	</batch:step>
+    <batch:step id="personStep">
+        <batch:tasklet>
+            <batch:chunk reader="personReader" processor="personProcessor" writer="personWriter"
+                chunk-completion-policy="simpleCompletionPolicy" />
+        </batch:tasklet>
+    </batch:step>
 
-	<batch:job id="personJob">
-		<batch:step id="step1" parent="personStep" />
-	</batch:job>
+    <batch:job id="personJob">
+        <batch:step id="step1" parent="personStep" />
+    </batch:job>
 
 </beans>

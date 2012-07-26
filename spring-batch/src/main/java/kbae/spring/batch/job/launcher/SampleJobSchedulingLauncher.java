@@ -39,9 +39,12 @@ public class SampleJobSchedulingLauncher {
 	 */
 	private JobParameters createJobParameters() {
 		final long runTime = System.currentTimeMillis();
-
-		return new JobParametersBuilder().addString("STEP_ONE", "Spring Batch").addString("STEP_TWO", "SPring Integration")
-				.addString("STEP_THREE", "SPring Rocks!!!").addLong("TIME", runTime).toJobParameters();
+		return new JobParametersBuilder()
+						.addString("STEP_ONE", "Spring Batch")
+							.addString("STEP_TWO", "SPring Integration")
+								.addString("STEP_THREE", "SPring Rocks!!!")
+									.addLong("TIME", runTime)
+										.toJobParameters();
 	}// createJobParameters()
 
 }
