@@ -107,9 +107,9 @@ public class Person {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
