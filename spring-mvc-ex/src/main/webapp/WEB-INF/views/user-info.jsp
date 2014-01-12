@@ -11,7 +11,7 @@
 <body class="yui3-skin-sam">
 	<dt:datatable items="users" name="test" rowColors="#ffffff,#EEEEEE"
 		border="0" width="800px" cellspacing="1">
-		<dt:paginator rowsPerPage="15"/>
+		<dt:paginator rowsPerPage="100"/>
 		<dt:column property="id" title="Sr.#" width="10%"
 			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer" />
 		<dt:column property="name" title="Name" width="40%"

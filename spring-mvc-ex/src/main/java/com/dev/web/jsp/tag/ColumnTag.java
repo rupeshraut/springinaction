@@ -34,6 +34,9 @@ public class ColumnTag extends SimpleTagSupport implements DynamicAttributes {
 	/** The width. */
 	private String width;
 
+	/** The sortable. */
+	private boolean sortable;
+
 	/** The body content. */
 	private String bodyContent;
 
@@ -162,6 +165,25 @@ public class ColumnTag extends SimpleTagSupport implements DynamicAttributes {
 	 */
 	public void setWidth(String width) {
 		this.width = width;
+	}
+
+	/**
+	 * Checks if is sortable.
+	 * 
+	 * @return true, if is sortable
+	 */
+	public boolean isSortable() {
+		return sortable;
+	}
+
+	/**
+	 * Sets the sortable.
+	 * 
+	 * @param sortable
+	 *            the new sortable
+	 */
+	public void setSortable(boolean sortable) {
+		this.sortable = sortable;
 	}
 
 	/**

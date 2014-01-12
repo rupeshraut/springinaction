@@ -60,6 +60,12 @@
             <rtexprvalue>false</rtexprvalue>
             <type>java.lang.String</type>
         </attribute>
+        <attribute>
+            <name>sortable</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.Boolean</type>
+        </attribute>        
         <dynamic-attributes>true</dynamic-attributes>
     </tag>
     <tag>
