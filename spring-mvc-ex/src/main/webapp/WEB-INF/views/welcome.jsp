@@ -9,15 +9,20 @@
 <title>Welcome</title>
 </head>
 <body>
-	Welcome <strong><u><sec:authentication property="principal.username"/></u></strong>.
+	Welcome
+	<strong><u><sec:authentication
+				property="principal.username" /></u></strong>.
 	<br />
 	<ul>
-		
+
 		<sec:authorize ifAllGranted="admin">
 			<li><a href="private/access">admin</a></li>
 		</sec:authorize>
 		<sec:authorize ifAnyGranted="user,admin">
 			<li><a href="public/access">user</a></li>
+		</sec:authorize>
+		<sec:authorize ifAnyGranted="user,admin">
+			<li><a href="testctrl/userInfo">User Info</a></li>
 		</sec:authorize>
 	</ul>
 	<a href="logout">Logout</a>

@@ -20,7 +20,8 @@
   <security:intercept-url pattern="/access-denied" access="permitAll" />
   <security:intercept-url pattern="/public/**" access="hasAnyRole('user','admin')" />
   <security:intercept-url pattern="/private/**" access="hasRole('admin')" />
-  <security:form-login login-page="/login" authentication-failure-url="/login?error=true"  default-target-url="/welcome" />
+  <security:intercept-url pattern="/**" access="hasRole('user')" />
+  <security:form-login login-page="/login" authentication-failure-url="/login?error=true"   default-target-url="/welcome" />
   <security:logout logout-url="/logout" />
   <security:http-basic />
  </security:http>
