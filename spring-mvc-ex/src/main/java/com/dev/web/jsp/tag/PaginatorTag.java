@@ -20,6 +20,9 @@ public class PaginatorTag extends SimpleTagSupport implements DynamicAttributes 
 	/** The rows per page. */
 	private int rowsPerPage;
 
+	/** The location. */
+	private String location = "header";
+
 	/**
 	 * Gets the rows per page.
 	 * 
@@ -37,6 +40,25 @@ public class PaginatorTag extends SimpleTagSupport implements DynamicAttributes 
 	 */
 	public void setRowsPerPage(int rowsPerPage) {
 		this.rowsPerPage = rowsPerPage;
+	}
+
+	/**
+	 * Gets the location.
+	 * 
+	 * @return the location
+	 */
+	public String getLocation() {
+		return this.location;
+	}
+
+	/**
+	 * Sets the location.
+	 * 
+	 * @param location
+	 *            the new location
+	 */
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	/**

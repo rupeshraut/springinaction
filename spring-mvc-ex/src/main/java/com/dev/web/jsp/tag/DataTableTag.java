@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.el.PropertyNotFoundException;
 import javax.servlet.jsp.JspContext;
@@ -187,26 +190,41 @@ public class DataTableTag extends SimpleTagSupport implements DynamicAttributes 
 	 *             the exception
 	 */
 	private void render(final JspContext jspContext) throws Exception {
+		final boolean isPaginator = (getPaginator() != null);
+		final List<String> paginatorLocations = new CopyOnWriteArrayList<>();
+		if (isPaginator && StringUtils.isNotEmpty(paginator.getLocation())) {
+			paginatorLocations.addAll(Arrays.asList(StringUtils.split(paginator.getLocation(), ",")));
+			
+			for (int i = 0; i < paginatorLocations.size(); i++) {
+				paginatorLocations.set(i, StringUtils.upperCase(paginatorLocations.get(i)));
+			}//for
+			
+		}// if
+
+		if (paginatorLocations.contains("HEADER")) {
+			renderPaginator(jspContext);
+		}// if
+
+		renderTable(jspContext);
+
+		if (paginatorLocations.contains("FOOTER")) {
+			renderPaginator(jspContext);
+		}// if
+	}
+
+	/**
+	 * Render.
+	 * 
+	 * @param jspContext
+	 *            the jsp context
+	 * @throws Exception
+	 *             the exception
+	 */
+	private void renderTable(final JspContext jspContext) throws Exception {
 		final StringBuffer output = new StringBuffer();
 		output.append(MessageFormat.format("<DIV ID=\"{0}Div\">", getName()));
 
 		final boolean isPaginator = (getPaginator() != null);
-
-		if (isPaginator) {
-
-			final String currentPage = (String) jspContext.findAttribute("currentPage");
-			final String totalItems = (String) jspContext.findAttribute("totalItems");
-			final String totalPages = (String) jspContext.findAttribute("totalPages");
-
-			output.append("<div>");
-			output.append(MessageFormat.format("{0} of {1}", currentPage, totalPages));
-			output.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-			output.append("<a href=\"?page=first\">first</a>&nbsp;|&nbsp;");
-			output.append(MessageFormat.format("<a href=\"?page=next&currentpage={0}\">next</a>&nbsp;|&nbsp;", currentPage));
-			output.append(MessageFormat.format("<a href=\"?page=previous&currentpage={0}\">previous</a>&nbsp;|&nbsp;", currentPage));
-			output.append("<a href=\"?page=last\">last</a>");
-			output.append("</div>");
-		}// if
 
 		output.append(MessageFormat.format("<TABLE ID=\"{0}\"  ", StringUtils.defaultString(getName()), "1", ""));
 
@@ -263,6 +281,31 @@ public class DataTableTag extends SimpleTagSupport implements DynamicAttributes 
 		output.append("</TABLE> ");
 		output.append("</DIV> ");
 
+		jspContext.getOut().write(output.toString());
+	}
+
+	/**
+	 * Render paginator.
+	 * 
+	 * @param jspContext
+	 *            the jsp context
+	 * @throws Exception
+	 *             the exception
+	 */
+	private void renderPaginator(final JspContext jspContext) throws Exception {
+		final StringBuffer output = new StringBuffer();
+		final String currentPage = (String) jspContext.findAttribute("currentPage");
+		final String totalItems = (String) jspContext.findAttribute("totalItems");
+		final String totalPages = (String) jspContext.findAttribute("totalPages");
+
+		output.append("<div style=\"background-color:#999999\">");
+		output.append(MessageFormat.format("{0} of {1}", currentPage, totalPages));
+		output.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+		output.append("<a href=\"?page=first\">first</a>&nbsp;|&nbsp;");
+		output.append(MessageFormat.format("<a href=\"?page=next&currentpage={0}\">next</a>&nbsp;|&nbsp;", currentPage));
+		output.append(MessageFormat.format("<a href=\"?page=previous&currentpage={0}\">previous</a>&nbsp;|&nbsp;", currentPage));
+		output.append("<a href=\"?page=last\">last</a>");
+		output.append("</div>");
 		jspContext.getOut().write(output.toString());
 	}
 
