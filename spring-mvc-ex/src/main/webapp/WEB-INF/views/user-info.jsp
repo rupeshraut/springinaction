@@ -9,17 +9,16 @@
 <title>User Info</title>
 </head>
 <body class="yui3-skin-sam">
-	<dt:datatable items="users" name="test" rowColors="#ffffff,#EEEEEE"
-		border="0" width="800px" cellspacing="1">
-		<dt:paginator rowsPerPage="100"/>
-		<dt:column property="id" title="Sr.#" width="10%"
+	<dt:datatable items="users" name="test"  border="0" width="800px" cellspacing="1">
+		<dt:paginator rowsPerPage="20" location="header,footer" style="background-color:#DDDDDD;width:800px;text-align:right"/>
+		<dt:column property="id" title="Sr.#" width="10%" sortable="true"
 			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer" />
 		<dt:column property="name" title="Name" width="40%"
 			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer" />
 		<dt:column property="age" title="Age" width="10%"
 			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer" />
-		<dt:column property="address" title="Addr" width="40%"
-			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer" />
+		<dt:column property="address" title="Address" width="40%"
+			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer" sortable="true"/>
 		<dt:column property="" title="Action"
 			style="font-weight:normal;background-color:gray;color:#ffffff;cursor: pointer">
 			<a href="javascript:alert('edit')" style="cursor: pointer">edit</a>
