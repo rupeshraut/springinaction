@@ -21,11 +21,6 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>scope</name>
-            <rtexprvalue>false</rtexprvalue>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
             <name>rowColors</name>
             <rtexprvalue>false</rtexprvalue>
             <type>java.lang.String</type>
